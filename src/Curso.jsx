@@ -1,29 +1,38 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
-const Curso = () => (
-    <article className="card ">
+
+
+
+const Curso = ({title, image, price, profesor}) => (
+    <article className="card "> 
         <div className="img-container s-ratio-16-9 s-radius-tr s-radius-tl">
-            <img src="https://ux.ed.team/img/curso-portada.png" alt="" />
+            <img src={image} alt={title} />
         </div>
         <div className="card__data s-border s-radius-br s-radius-bl s-pxy-2">
-            <h3 className="t5 s-mb-2 s-center">
-            Programación orientada a objetos con Go
-            </h3>
-            <div className="s-mb-2 s-main-center">
-            <div className="card__teacher s-cross-center">
-                <div className="card__avatar s-mr-1">
-                <div className="circle img-container">
-                    <img src="https://c4.wallpaperflare.com/wallpaper/556/199/617/new-york-city-night-city-wallpaper-thumb.jpg" alt="" />
-                </div>
-                </div>
-                <span className="small">Alexys Lozada</span>
-            </div>
+                <h3 className="center" >{title}</h3>   
+            <div className="s-main-center">
+                {profesor}
             </div>
             <div className="s-main-center">
-            <a className="button--ghost-alert button--tiny" href="#">$ 20USD</a>
+            <a className="button--ghost-alert button--tiny" href="#">{`$ ${price} USD`}</a>
             </div>
         </div>
     </article>
 )
+
+Curso.propTypes = {
+    title : PropTypes.string,
+    image : PropTypes.string,
+    price : PropTypes.number,
+    profesor : PropTypes.string
+}
+
+Curso.defaultProps = {
+    title : "No se encontro titulo",
+    image : "https://onlinezebra.com/wp-content/uploads/2019/01/error-404-not-found.jpg",
+    price : "--",
+    profesro : "Isac Newtoon"
+}
 
 export default Curso;
